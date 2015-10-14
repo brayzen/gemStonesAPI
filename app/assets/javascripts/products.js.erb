@@ -1,0 +1,62 @@
+(function() {
+  var app = angular.module('store-directives', []);
+
+
+  app.directive("productDescription", function() {
+    var literal = {
+      restrict: 'E',
+      templateUrl: "<%= asset_path 'product-description.html' %>"
+    };
+    console.log(literal);
+    return literal
+  });
+
+  app.directive("productReviews", function() {
+    return {
+      restrict: 'E',
+      templateUrl: "<%= asset_path 'product-reviews.html' %>"
+    };
+  });
+
+  app.directive("productSpecs", function() {
+    return {
+      restrict:"A",
+      templateUrl: "<%= asset_path 'product-specs.html' %>"
+    };
+  });
+
+  app.directive("productTabs", function() {
+    return {
+      restrict: "E",
+      templateUrl: "<%= asset_path 'product-tabs.html' %>",
+      controller: function() {
+        this.tab = 1;
+
+        this.isSet = function(checkTab) {
+          return this.tab === checkTab;
+        };
+
+        this.setTab = function(activeTab) {
+          this.tab = activeTab;
+        };
+      },
+      controllerAs: "tab"
+    };
+  });
+
+  app.directive("productGallery", function() {
+    var literal = {
+      restrict: "E",
+      templateUrl: "<%= asset_path 'templates/product-gallery.html' %>",
+      controller: function() {
+        this.current = 0;
+        this.setCurrent = function(imageNumber){
+          this.current = imageNumber || 0;
+         console.log(this.current + 'is the current image number');
+        };
+      },
+      controllerAs: "gallery"
+    };
+    return literal;
+  });
+})();(function() {})();

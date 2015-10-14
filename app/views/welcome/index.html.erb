@@ -1,0 +1,22 @@
+
+    <!--  Store Header  -->
+    <header>
+      <h1 class="text-center">MY Gems</h1>
+      <h2 class="text-center">an Angular client side app</h2>
+    </header>
+
+    <!--  Products Container  -->
+    <div class="list-group">
+      <!--  Product Container  -->
+      <div class="list-group-item" ng-repeat="product in store.products">
+        {{1 + 2}}
+        <h3>{{product.name}} <em class="pull-right">{{product.price | currency}}</em></h3>
+
+        <!-- Image Gallery  -->
+        <product-gallery></product-gallery>
+
+        <!-- Product Tabs  -->
+        <product-tabs></product-tabs>
+      </div>
+
+    </div>

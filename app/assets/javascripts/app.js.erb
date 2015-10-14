@@ -1,0 +1,27 @@
+(function() {
+  var app = angular.module('gemStore', ['store-directives']);
+
+  app.controller('StoreController', ['$http', function($http){
+    var store = this;
+    store.products = [];
+
+    $http.get('http://api.storegemapi.dev/stones').success(function(data){
+      console.log(data);
+      store.products.push(data);
+      console.log("logging STORE.PRODUCTS");
+      console.log(store.products);
+    });
+
+  }]);
+
+  app.controller("ReviewController", function(){
+    this.review = {};
+
+    this.addReview = function(product){
+      this.review.createdOn = Date.now();
+      product.reviews.push(this.review);
+      this.review = {};
+    };
+  });
+
+})();
