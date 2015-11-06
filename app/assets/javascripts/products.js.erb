@@ -5,7 +5,7 @@
   app.directive("productDescription", function() {
     var literal = {
       restrict: 'E',
-      templateUrl: "<%= asset_path 'product-description.html' %>"
+      templateUrl: "<%= asset_path 'templates/product-description.html' %>"
     };
     console.log(literal);
     return literal
@@ -14,21 +14,30 @@
   app.directive("productReviews", function() {
     return {
       restrict: 'E',
-      templateUrl: "<%= asset_path 'product-reviews.html' %>"
+      templateUrl: "<%= asset_path 'templates/product-reviews.html' %>",
+      controller: function(){
+        this.review = {};
+
+        this.addReview = function(product){
+          this.review.createdOn = Date.now();
+          product.reviews.push(this.review);
+          this.review = {};
+        };
+      }
     };
   });
 
   app.directive("productSpecs", function() {
     return {
       restrict:"A",
-      templateUrl: "<%= asset_path 'product-specs.html' %>"
+      templateUrl: "<%= asset_path 'templates/product-specs.html' %>"
     };
   });
 
   app.directive("productTabs", function() {
     return {
       restrict: "E",
-      templateUrl: "<%= asset_path 'product-tabs.html' %>",
+      templateUrl: "<%= asset_path 'templates/product-tabs.html' %>",
       controller: function() {
         this.tab = 1;
 
