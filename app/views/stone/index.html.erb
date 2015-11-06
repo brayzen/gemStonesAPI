@@ -1,0 +1,17 @@
+<h1>Stone#index</h1>
+<p>Find me in app/views/stone/index.html.erb</p>
+
+<!-- <section>
+  <input type="text" name="name" ng-model="newStone.name">
+  <input type="text" name="price" ng-model="newStone.price">
+  <button ng-click="create(newStone)">Create Gemstone</button>
+</section> -->
+
+
+
+$scope.create = function(stone){
+  $http.post('/stones', { stone: stone })
+    .success(function(data) {
+      $scope.products.push(data);
+  })
+}
