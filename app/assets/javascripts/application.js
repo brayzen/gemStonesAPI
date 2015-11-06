@@ -15,4 +15,5 @@
 //= require angular
 //= require app
 //= require products
+//= require_tree
 

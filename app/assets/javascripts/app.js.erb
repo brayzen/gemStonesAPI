@@ -5,10 +5,11 @@
     var store = this;
     store.products = [];
 
-    $http.get('http://api.storegemapi.dev/stones').success(function(data){
-      console.log(data);
-      store.products.push(data);
-      console.log("logging STORE.PRODUCTS");
+    $http.get('/stones').success(function(data){
+      console.log(this)
+      console.log(store);
+      store.products = data;
+      // console.log("logging STORE.PRODUCTS");
       console.log(store.products);
     });
 
